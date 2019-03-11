@@ -1,2 +1,0 @@
-# sso
-基于Springboot和SpringSercurity的单点登录
