@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+    <input id="a">
+    <input id="b">
+
+</body>
+<script type="text/javascript" src="./jquery-1.11.3.js"></script>
+<script type="text/javascript">
+	//获取参数
+	function getQueryString(name){
+	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	     var r = window.location.search.substr(1).match(reg);
+	     if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	//检测是否
+	function isLogin(){
+		var code = getQueryString("code");
+		$.ajax({
+	        type : "get",
+	        contentType : "application/x-www-form-urlencoded",
+	        url : "/sso/core/login/"+code+"/"+"school",
+	        dataType : 'json',
+	        async: false,      // 请求是否异步，默认为异步，这也是ajax重要特性
+	        cache: false,    // 是否对响应消息进行缓存
+	        success : function(data) {
+                $("#b").val(data.data);
+	        },
+	        beforeSend: function() {
+	        },
+	        complete: function() {
+	        },
+	        error: function() {
+	        	alertMessage('提示信息',"服务器通信异常!");
+	        }
+	     });
+	}
+	
+	
+	var redirectUrl=encodeURIComponent("http://192.168.31.65/sso/index.html");
+	var code = getQueryString("code");
+
+    if(code==null||code==""){
+        location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb656226bdec8c07b&redirect_uri="+redirectUrl+"&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect";
+    }else{
+        $("#a").val(code);
+		isLogin();
+	}
+</script>
+</html>

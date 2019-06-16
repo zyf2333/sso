@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="indi.zyf.sso.mapper.SysUserMapper">
+	<resultMap id="BaseResultMap" type="indi.zyf.sso.model.SysUser">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="tel" property="tel" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="idcard" property="idcard" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="power" property="power" jdbcType="VARCHAR" />
+		<result column="token" property="token" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="ext1" property="ext1" jdbcType="VARCHAR" />
+		<result column="ext2" property="ext2" jdbcType="VARCHAR" />
+		<result column="ext3" property="ext3" jdbcType="VARCHAR" />
+		<result column="ext4" property="ext4" jdbcType="VARCHAR" />
+		<result column="ext5" property="ext5" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, username, password, phone, tel, email, name, idcard,
+		address, power,
+		token, title,
+		state, create_date, update_date, ext1,
+		ext2, ext3, ext4, ext5
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+			parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from sys_user
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		sys_user
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="indi.zyf.sso.model.SysUser">
+		insert into sys_user (id,
+		username, password,
+		phone, tel, email,
+		name, idcard, address,
+		power,
+		token, title,
+		state, create_date, update_date,
+		ext1, ext2, ext3, ext4,
+		ext5)
+		values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR},
+		#{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR},
+		#{power,jdbcType=VARCHAR},
+		#{token,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+		#{state,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP},
+		#{updateDate,jdbcType=TIMESTAMP},
+		#{ext1,jdbcType=VARCHAR},
+		#{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR},
+		#{ext4,jdbcType=VARCHAR},
+		#{ext5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="indi.zyf.sso.model.SysUser">
+		insert into sys_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="tel != null">
+				tel,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="idcard != null">
+				idcard,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="power != null">
+				power,
+			</if>
+			<if test="token != null">
+				token,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="createDate != null">
+				create_date,
+			</if>
+			<if test="updateDate != null">
+				update_date,
+			</if>
+			<if test="ext1 != null">
+				ext1,
+			</if>
+			<if test="ext2 != null">
+				ext2,
+			</if>
+			<if test="ext3 != null">
+				ext3,
+			</if>
+			<if test="ext4 != null">
+				ext4,
+			</if>
+			<if test="ext5 != null">
+				ext5,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				#{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="power != null">
+				#{power,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null">
+				#{token,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				#{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				#{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				#{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				#{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				#{ext5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="indi.zyf.sso.model.SysUser">
+		update sys_user
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				tel = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="idcard != null">
+				idcard = #{idcard,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="power != null">
+				power = #{power,jdbcType=VARCHAR},
+			</if>
+			<if test="token != null">
+				token = #{token,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				ext1 = #{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				ext2 = #{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				ext3 = #{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				ext4 = #{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				ext5 = #{ext5,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="indi.zyf.sso.model.SysUser">
+		update sys_user
+		set username = #{username,jdbcType=VARCHAR},
+		password =
+		#{password,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		tel =
+		#{tel,jdbcType=VARCHAR},
+		email = #{email,jdbcType=VARCHAR},
+		name =
+		#{name,jdbcType=VARCHAR},
+		idcard = #{idcard,jdbcType=VARCHAR},
+		address =
+		#{address,jdbcType=VARCHAR},
+		power = #{power,jdbcType=VARCHAR},
+		token =
+		#{token,jdbcType=VARCHAR},
+		title = #{title,jdbcType=VARCHAR},
+		state =
+		#{state,jdbcType=INTEGER},
+		create_date =
+		#{createDate,jdbcType=TIMESTAMP},
+		update_date =
+		#{updateDate,jdbcType=TIMESTAMP},
+		ext1 = #{ext1,jdbcType=VARCHAR},
+		ext2
+		= #{ext2,jdbcType=VARCHAR},
+		ext3 = #{ext3,jdbcType=VARCHAR},
+		ext4 =
+		#{ext4,jdbcType=VARCHAR},
+		ext5 = #{ext5,jdbcType=VARCHAR}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+	<select id="selectByUsername" resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user
+		where username=#{username} and state = 1
+	</select>
+	<select id="selectByState" resultType="indi.zyf.sso.model.SysUser">
+		select *from sys_user
+		where state = #{state}
+	</select>
+	<select id="count" resultType="int">
+		select count(1) from sys_user
+		where state = #{state}
+	</select>
+	<select id="selectByUsernameDisable" resultType="indi.zyf.sso.model.SysUser">
+		select *from sys_user where username=#{username}
+	</select>
+	<select id="queryPlatformSchool" parameterType="java.lang.String"
+			resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user where state = 1 and power in ('0100')
+		<if test="ext1 !=null and ext1 !='' ">
+			and ext1 = #{ext1}
+		</if>
+	</select>
+	<select id="querySchoolTeacher" parameterType="java.lang.String"
+			resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user where state = 1 and (id = ${id} or
+		ext1 = #{sid})
+	</select>
+	<select id="selectLikeByName" resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user
+		where state = 1 and name like #{name}
+	</select>
+	<select id="selectLikeByNameSchool" resultType="indi.zyf.sso.model.SysUser">
+		select * from
+		sys_user where state = 1 and name like #{name} and ext1 =
+		#{sId}
+	</select>
+	<select id="selectBySchoolId" resultMap="BaseResultMap"
+			parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from sys_user
+		where ext1 = #{ext1} and state = 1
+	</select>
+	<select id="teacherListCount" resultType="java.lang.Integer">
+		select count(*) from
+		sys_user where state = 1 and ext1 = #{ext1}
+	</select>
+	<select id="selectByClazzId" resultMap="BaseResultMap"
+			parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from sys_user
+		where ext2 = #{ext2} and state = 1
+	</select>
+	<select id="queryClazzAllTeacher" resultType="int">
+		select count(1)
+		from sys_user where ext2 = #{cid} and state = 1
+	</select>
+	<select id="selectTeacherByCid" resultType="indi.zyf.sso.model.SysUser">
+		select * from
+		sys_user where state = 1 and power ='ROLE_TEACHER' and ext2 =
+		#{cid,jdbcType=VARCHAR}
+	</select>
+
+	<select id="queryAllSchoolTeacher" resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user where state = 1 and ext1 = #{sid,jdbcType=VARCHAR}
+		and power like 'ROLE_TEACHER%' and ext3 != 'admin'
+	</select>
+	<select id="queryByUsername" resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user
+		where username=#{username}
+	</select>
+	<select id="queryGovUser" resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user
+		where username=#{username} and state = 1 AND POWER NOT IN ('ROLE_REGION','ROLE_CITY','ROLE_PROVINCE','ROLE_MANAGER')
+	</select>
+	<select id="queryClazzAllTeacherList" resultType="indi.zyf.sso.model.SysUser">
+		select * from sys_user 
+		where ext2 IN
+		(SELECT id FROM clazz 
+		WHERE id=#{cId} AND <![CDATA[create_date <= #{endTime}]]>)
+		and state = 1 
+		and power like 'ROLE_TEACHER%'
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	<select id="querySchoolAllTeacher"  resultType="int">
+		select count(1) from sys_user 
+		where ext1 IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} AND <![CDATA[create_date <= #{endTime}]]>)
+		and state = 1 
+		and power ='ROLE_TEACHER'
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+</mapper>

@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="indi.zyf.sso.mapper.ChildrenMapper">
+	<resultMap id="BaseResultMap" type="indi.zyf.sso.model.Children">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="s_id" property="sId" jdbcType="VARCHAR" />
+		<result column="c_id" property="cId" jdbcType="VARCHAR" />
+		<result column="phone1" property="phone1" jdbcType="VARCHAR" />
+		<result column="person1" property="person1" jdbcType="VARCHAR" />
+		<result column="phone2" property="phone2" jdbcType="VARCHAR" />
+		<result column="person2" property="person2" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+		<result column="sex" property="sex" jdbcType="INTEGER" />
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="ext1" property="ext1" jdbcType="VARCHAR" />
+		<result column="ext2" property="ext2" jdbcType="VARCHAR" />
+		<result column="ext3" property="ext3" jdbcType="VARCHAR" />
+		<result column="ext4" property="ext4" jdbcType="VARCHAR" />
+		<result column="ext5" property="ext5" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, s_id, c_id, phone1, person1, phone2, person2, birthday,
+		name, age,
+		sex, state,
+		create_date, update_date, ext1, ext2, ext3, ext4,
+		ext5
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from children
+		where id = #{id,jdbcType=INTEGER} and state = 1
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		children
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="indi.zyf.sso.model.Children">
+		insert into children (id,
+		s_id, c_id,
+		phone1, person1, phone2,
+		person2, birthday, name,
+		age, sex,
+		state, create_date,
+		update_date, ext1, ext2,
+		ext3, ext4, ext5)
+		values
+		(#{id,jdbcType=INTEGER}, #{sId,jdbcType=VARCHAR},
+		#{cId,jdbcType=VARCHAR},
+		#{phone1,jdbcType=VARCHAR},
+		#{person1,jdbcType=VARCHAR}, #{phone2,jdbcType=VARCHAR},
+		#{person2,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{age,jdbcType=INTEGER},
+		#{sex,jdbcType=INTEGER}, #{state,jdbcType=INTEGER},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{updateDate,jdbcType=TIMESTAMP},
+		#{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR},
+		#{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR},
+		#{ext5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="indi.zyf.sso.model.Children">
+		insert into children
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="sId != null">
+				s_id,
+			</if>
+			<if test="cId != null">
+				c_id,
+			</if>
+			<if test="phone1 != null">
+				phone1,
+			</if>
+			<if test="person1 != null">
+				person1,
+			</if>
+			<if test="phone2 != null">
+				phone2,
+			</if>
+			<if test="person2 != null">
+				person2,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="age != null">
+				age,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="createDate != null">
+				create_date,
+			</if>
+			<if test="updateDate != null">
+				update_date,
+			</if>
+			<if test="ext1 != null">
+				ext1,
+			</if>
+			<if test="ext2 != null">
+				ext2,
+			</if>
+			<if test="ext3 != null">
+				ext3,
+			</if>
+			<if test="ext4 != null">
+				ext4,
+			</if>
+			<if test="ext5 != null">
+				ext5,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="sId != null">
+				#{sId,jdbcType=VARCHAR},
+			</if>
+			<if test="cId != null">
+				#{cId,jdbcType=VARCHAR},
+			</if>
+			<if test="phone1 != null">
+				#{phone1,jdbcType=VARCHAR},
+			</if>
+			<if test="person1 != null">
+				#{person1,jdbcType=VARCHAR},
+			</if>
+			<if test="phone2 != null">
+				#{phone2,jdbcType=VARCHAR},
+			</if>
+			<if test="person2 != null">
+				#{person2,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null">
+				#{age,jdbcType=INTEGER},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=INTEGER},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				#{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				#{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				#{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				#{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				#{ext5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="indi.zyf.sso.model.Children">
+		update children
+		<set>
+			<if test="sId != null">
+				s_id = #{sId,jdbcType=VARCHAR},
+			</if>
+			<if test="cId != null">
+				c_id = #{cId,jdbcType=VARCHAR},
+			</if>
+			<if test="phone1 != null">
+				phone1 = #{phone1,jdbcType=VARCHAR},
+			</if>
+			<if test="person1 != null">
+				person1 = #{person1,jdbcType=VARCHAR},
+			</if>
+			<if test="phone2 != null">
+				phone2 = #{phone2,jdbcType=VARCHAR},
+			</if>
+			<if test="person2 != null">
+				person2 = #{person2,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null">
+				age = #{age,jdbcType=INTEGER},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=INTEGER},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				ext1 = #{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				ext2 = #{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				ext3 = #{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				ext4 = #{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				ext5 = #{ext5,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="indi.zyf.sso.model.Children">
+		update children
+		set s_id = #{sId,jdbcType=VARCHAR},
+		c_id = #{cId,jdbcType=VARCHAR},
+		phone1 = #{phone1,jdbcType=VARCHAR},
+		person1 =
+		#{person1,jdbcType=VARCHAR},
+		phone2 = #{phone2,jdbcType=VARCHAR},
+		person2 = #{person2,jdbcType=VARCHAR},
+		birthday =
+		#{birthday,jdbcType=VARCHAR},
+		name = #{name,jdbcType=VARCHAR},
+		age =
+		#{age,jdbcType=INTEGER},
+		sex = #{sex,jdbcType=INTEGER},
+		state =
+		#{state,jdbcType=INTEGER},
+		create_date =
+		#{createDate,jdbcType=TIMESTAMP},
+		update_date =
+		#{updateDate,jdbcType=TIMESTAMP},
+		ext1 = #{ext1,jdbcType=VARCHAR},
+		ext2
+		= #{ext2,jdbcType=VARCHAR},
+		ext3 = #{ext3,jdbcType=VARCHAR},
+		ext4 =
+		#{ext4,jdbcType=VARCHAR},
+		ext5 = #{ext5,jdbcType=VARCHAR}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectAll" resultType="indi.zyf.sso.model.Children">
+		select * from children where state = 1 and c_id=#{cid}
+		<if test="name != null">
+			and name like #{name}
+		</if>
+	</select>
+
+	<select id="selectAllCount" resultType="int">
+		select count(1) from children where state = 1 and c_id=#{cid}
+		<if test="name != null">
+			and name like #{name}
+		</if>
+	</select>
+
+	<select id="all" resultType="indi.zyf.sso.model.Children">
+		select * from children 
+		where state = 1
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+
+	<select id="reportallAsClazz" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 
+		and c_id IN
+		(SELECT id FROM clazz 
+		WHERE id=#{cId} AND <![CDATA[create_date <= #{endTime}]]>)
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+
+	<select id="reportallAsSchool" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} AND <![CDATA[create_date <= #{endTime}]]>)
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	
+	<select id="reportallBySchool" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} )
+	</select>
+
+	<select id="selectLikeByName" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 and name like #{name}
+	</select>
+
+	<select id="selectLikeByNameSchool" resultType="indi.zyf.sso.model.Children">
+		select * from
+		children
+		where state = 1 and name like #{name} and s_id =
+		#{sid}
+	</select>
+
+	<select id="selectLikeByNameClazz" resultType="indi.zyf.sso.model.Children">
+		select * from
+		children
+		where state = 1 and name like #{name} and c_id =
+		#{cid}
+	</select>
+
+	<select id="queryByClazz" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 and c_id =#{clazzId}
+	</select>
+
+	<select id="graduationUseClazz" parameterType="java.lang.Integer"
+		resultType="java.lang.Integer">
+		update children set state = 2 where c_id = #{id}
+	</select>
+	<select id="selectBySidAndCid" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from children
+		where state = 1 and s_id = #{sid} and c_id = #{cid}
+	</select>
+	<select id="childrenListCount" resultType="java.lang.Integer">
+		select count(*) from
+		children where state = 1 and s_id = #{sid} and c_id = #{cid}
+	</select>
+	<select id="selectByCid" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from children
+		where c_id = #{cid} and state=1
+	</select>
+	<select id="queryClazzAllChild" resultType="int">
+		select count(1) from
+		children where c_id = #{cid} and state = 1
+	</select>
+	<select id="selectByClazz" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 and c_id =
+		#{cId}
+	</select>
+	<select id="selectBySchool" resultType="indi.zyf.sso.model.Children">
+		select * from children
+		where state = 1 and s_id =
+		#{sId}
+	   <if test="startDate != null and startDate != '0'.toString()" >
+	    AND birthday &gt; DATE_FORMAT(#{startDate},'%Y%m%d')
+	   </if>
+	   <if test="endTime != null and endTime != '0'.toString()" >
+	    AND birthday &lt;= DATE_FORMAT(#{endTime},'%Y%m%d')
+	   </if>
+	</select>
+	<select id="selectAllCountByClazz" resultType="int">
+		select count(1) from children
+		where state = 1 
+		and c_id IN
+		(SELECT id FROM clazz 
+		WHERE id=#{cId} AND <![CDATA[create_date <= #{endTime}]]>)
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	<select id="selectAllCountBySchool" resultType="int">
+		select count(1) from children
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} AND <![CDATA[create_date <= #{endTime}]]>)
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+</mapper>

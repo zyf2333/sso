@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="indi.zyf.sso.mapper.SchoolMapper">
+	<resultMap id="BaseResultMap" type="indi.zyf.sso.model.School">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="school_name" property="schoolName" jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="region" property="region" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="lalo" property="lalo" jdbcType="VARCHAR" />
+		<result column="leader" property="leader" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="ext1" property="ext1" jdbcType="VARCHAR" />
+		<result column="ext2" property="ext2" jdbcType="VARCHAR" />
+		<result column="ext3" property="ext3" jdbcType="VARCHAR" />
+		<result column="ext4" property="ext4" jdbcType="VARCHAR" />
+		<result column="ext5" property="ext5" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, school_name, province, city, region, phone, address,
+		lalo, leader,
+		title, state,
+		create_date, update_date, ext1, ext2, ext3,
+		ext4, ext5
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from school
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from school
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="indi.zyf.sso.model.School">
+		insert into school (id,
+		school_name, province,
+		city, region, phone,
+		address, lalo, leader,
+		title, state, create_date,
+		update_date, ext1, ext2,
+		ext3, ext4, ext5)
+		values (#{id,jdbcType=INTEGER}, #{schoolName,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{region,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+		#{address,jdbcType=VARCHAR}, #{lalo,jdbcType=VARCHAR},
+		#{leader,jdbcType=VARCHAR},
+		#{title,jdbcType=VARCHAR},
+		#{state,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP},
+		#{updateDate,jdbcType=TIMESTAMP}, #{ext1,jdbcType=VARCHAR},
+		#{ext2,jdbcType=VARCHAR},
+		#{ext3,jdbcType=VARCHAR},
+		#{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="indi.zyf.sso.model.School">
+		insert into school
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="schoolName != null">
+				school_name,
+			</if>
+			<if test="province != null">
+				province,
+			</if>
+			<if test="city != null">
+				city,
+			</if>
+			<if test="region != null">
+				region,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="lalo != null">
+				lalo,
+			</if>
+			<if test="leader != null">
+				leader,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="createDate != null">
+				create_date,
+			</if>
+			<if test="updateDate != null">
+				update_date,
+			</if>
+			<if test="ext1 != null">
+				ext1,
+			</if>
+			<if test="ext2 != null">
+				ext2,
+			</if>
+			<if test="ext3 != null">
+				ext3,
+			</if>
+			<if test="ext4 != null">
+				ext4,
+			</if>
+			<if test="ext5 != null">
+				ext5,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="schoolName != null">
+				#{schoolName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="region != null">
+				#{region,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="lalo != null">
+				#{lalo,jdbcType=VARCHAR},
+			</if>
+			<if test="leader != null">
+				#{leader,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				#{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				#{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				#{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				#{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				#{ext5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="indi.zyf.sso.model.School">
+		update school
+		<set>
+			<if test="schoolName != null">
+				school_name = #{schoolName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				province = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="region != null">
+				region = #{region,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="lalo != null">
+				lalo = #{lalo,jdbcType=VARCHAR},
+			</if>
+			<if test="leader != null">
+				leader = #{leader,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				ext1 = #{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				ext2 = #{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				ext3 = #{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				ext4 = #{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				ext5 = #{ext5,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="indi.zyf.sso.model.School">
+		update school
+		set
+		school_name = #{schoolName,jdbcType=VARCHAR},
+		province =
+		#{province,jdbcType=VARCHAR},
+		city = #{city,jdbcType=VARCHAR},
+		region =
+		#{region,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		address =
+		#{address,jdbcType=VARCHAR},
+		lalo = #{lalo,jdbcType=VARCHAR},
+		leader =
+		#{leader,jdbcType=VARCHAR},
+		title = #{title,jdbcType=VARCHAR},
+		state =
+		#{state,jdbcType=INTEGER},
+		create_date =
+		#{createDate,jdbcType=TIMESTAMP},
+		update_date =
+		#{updateDate,jdbcType=TIMESTAMP},
+		ext1 = #{ext1,jdbcType=VARCHAR},
+		ext2
+		= #{ext2,jdbcType=VARCHAR},
+		ext3 = #{ext3,jdbcType=VARCHAR},
+		ext4 =
+		#{ext4,jdbcType=VARCHAR},
+		ext5 = #{ext5,jdbcType=VARCHAR}
+		where id =
+		#{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectAll" resultType="indi.zyf.sso.model.School">
+		select * from school 
+		where state = 1
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	
+	<select id="selectSchoolAll" resultType="indi.zyf.sso.model.School">
+		select * from school 
+		where state = 1
+	</select>
+	
+	<select id="selectAllAsSchool" resultType="indi.zyf.sso.model.School">
+		select * from school 
+		where state = 1 
+		and id=#{schoolId}
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+
+	<select id="selectAllByProvinceCityRegion" resultType="indi.zyf.sso.model.School">
+		select *
+		from school where state = 1 and province =#{province} and
+		city=#{city}
+		and region=#{region}
+	</select>
+
+	<select id="selectRegion" resultType="java.lang.String">
+		select distinct region from
+		school where state = 1
+	</select>
+
+	<select id="selectRegionUseCity" resultType="java.lang.String">
+		select distinct
+		region from school where state = 1 and province=#{city}
+	</select>
+
+	<select id="selectCity" resultType="java.lang.String">
+		select distinct city from
+		school where state = 1
+	</select>
+
+	<select id="selectCityUseProvince" resultType="java.lang.String">
+		select distinct
+		city from school where state = 1 and province=#{province}
+	</select>
+
+	<select id="selectprovince" resultType="java.lang.String">
+		select distinct province
+		from school where state = 1
+	</select>
+
+	<select id="selectUseRegion" resultType="indi.zyf.sso.model.School">
+		select * from school
+		where state = 1 and region = #{region}
+	</select>
+
+	<select id="selectUseRegionCount" resultType="int">
+		select count(1)
+		from school where state = 1 and region = #{region}
+	</select>
+
+	<select id="selectUseCity" resultType="indi.zyf.sso.model.School">
+		select * from school where
+		state = 1 and city = #{city}
+	</select>
+
+	<select id="selectUseCityCount" resultType="int">
+		select count(1) from
+		school where state = 1 and city = #{city}
+	</select>
+
+	<select id="selectUseProvince" resultType="indi.zyf.sso.model.School">
+		select * from school
+		where state = 1 and province = #{province}
+	</select>
+
+	<select id="selectUseProvinceCount" resultType="int">
+		select count(1)
+		from school where state = 1 and province = #{province}
+	</select>
+
+	<select id="count" resultType="int">
+		select count(1)
+		from school where state = 1 and province =#{province} and
+		city=#{city}
+		and region=#{region}
+	</select>
+
+	<select id="selectLikeByName" resultType="indi.zyf.sso.model.School">
+		select * from school
+		where state = 1 and school_name like #{name}
+	</select>
+</mapper>

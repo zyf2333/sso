@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--<form action="/sso/authentication/form" method="post">-->
+<table>
+    <tr>
+        <td>用户名:</td>
+        <td><input id="username" type="text" name="username" value="zhaoyanfei"></td>
+    </tr>
+    <tr>
+        <td>密码:</td>
+        <td><input id="password" type="password" name="password"></td>
+    </tr>
+    <tr>
+        <td>图形验证码:</td>
+        <td>
+            <input type="text" name="imageCode" id="imageCode">
+        </td>
+        <td><img id="image" src=""></td>
+    </tr>
+    <tr>
+        <td>
+            <button id="getImageCode">获取图片验证码</button>
+        </td>
+        <td>
+            <button id="submit" type="submit">登录</button>
+        </td>
+    </tr>
+    <p id="message"></p>
+</table>
+<!--</form>-->
+
+<h3>邮箱</h3>
+    <table>
+        <tr>
+            <td>用户名:</td>
+            <td><input id="username1" type="text" name="username" value="691721078@qq.com"></td>
+        </tr>
+        <tr>
+            <td>密码:</td>
+            <td><input id="password1" type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td>邮箱验证码:</td>
+            <td>
+                <input id="emailCode" type="text" name="code">
+
+                <button id="getEmailCode">获取邮箱验证码</button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="registByEmail" type="submit">登录</button>
+            </td>
+        </tr>
+        <p id="message2"></p>
+    </table>
+</body>
+<script type="text/javascript" src="./jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        $("#getImageCode").click(function () {
+            var username = $("#username").val();
+            if (username == "" || username == null) {
+                alert("先填写用户名");
+                return;
+            }
+            $("#image").attr("src", "/sso/code/image?width=100&height=30&username=" + username);
+        });
+        $("#submit").click(function () {
+            var username = $("#username").val();
+            var password = $("#password").val();
+            var imageCode = $("#imageCode").val();
+            var image = $("#image").attr("src");
+            if (username != "" && password != "" && imageCode != "" && image != "") {
+                $.ajax({
+                    url: "/sso/authentication/form",
+                    type: "post",
+                    dataType: "json",
+                    data: "username=" + username + "&password=" + password + "&imageCode=" + imageCode,
+                    headers: {
+                        Authorization: "Basic ZWR1OmVkdVNlY3JldA=="
+                    },
+                    success: function (result) {
+                        console.log(result)
+                        $("#message").html(JSON.stringify(result.data));
+                    },
+                    error: function (error) {
+                        $("#message").html(error.responseText);
+                    }
+                });
+            } else {
+                $("#message").html("用户名，密码，验证码不可为空");
+            }
+        });
+
+
+
+        $("#getEmailCode").click(function () {
+            var username = $("#username1").val();
+            if (username != "") {
+                $.ajax({
+                    url: "/sso/code/email",
+                    type: "get",
+                    dataType: "json",
+                    data: "username=" + username,
+                    headers: {
+                        Authorization: "Basic ZWR1OmVkdVNlY3JldA=="
+                    },
+                    success: function (result) {
+                        console.log(result)
+                        $("#message2").html(JSON.stringify(result));
+                    },
+                    error: function (error) {
+                        $("#message2").html(error.responseText);
+                    }
+                });
+            } else {
+                $("#message").html("用户名不可为空");
+            }
+        });
+
+
+        $("#registByEmail").click(function () {
+            var username = $("#username1").val();
+            var password = $("#password1").val();
+            var emailCode = $("#emailCode").val();
+            if (username != "" && password != "" && emailCode != "") {
+                $.ajax({
+                    url: "/sso/sysuser/registByEmail",
+                    type: "post",
+                    dataType: "json",
+                    data: "username=" + username + "&password=" + password + "&emailCode=" + emailCode,
+                    headers: {
+                        Authorization: "Basic ZWR1OmVkdVNlY3JldA=="
+                    },
+                    success: function (result) {
+                        console.log(result)
+                        $("#message").html(JSON.stringify(result.errMsg));
+                    },
+                    error: function (error) {
+                        $("#message2").html(error.responseText);
+                    }
+                });
+            } else {
+                $("#message2").html("用户名，密码，验证码不可为空");
+            }
+        });
+
+    })
+
+
+</script>
+</html>

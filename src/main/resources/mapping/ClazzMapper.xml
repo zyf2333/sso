@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="indi.zyf.sso.mapper.ClazzMapper">
+	<resultMap id="BaseResultMap" type="indi.zyf.sso.model.Clazz">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="school_name" property="schoolName" jdbcType="VARCHAR" />
+		<result column="s_id" property="sId" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="leader" property="leader" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+		<result column="ext1" property="ext1" jdbcType="VARCHAR" />
+		<result column="ext2" property="ext2" jdbcType="VARCHAR" />
+		<result column="ext3" property="ext3" jdbcType="VARCHAR" />
+		<result column="ext4" property="ext4" jdbcType="VARCHAR" />
+		<result column="ext5" property="ext5" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, school_name, s_id, phone, leader, title, state, create_date,
+		update_date, ext1,
+		ext2, ext3, ext4, ext5
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from clazz
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from clazz
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="indi.zyf.sso.model.Clazz">
+		insert into clazz (id, school_name, s_id,
+		phone, leader, title,
+		state, create_date, update_date,
+		ext1, ext2, ext3, ext4,
+		ext5)
+		values (#{id,jdbcType=INTEGER}, #{schoolName,jdbcType=VARCHAR},
+		#{sId,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},
+		#{state,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP},
+		#{updateDate,jdbcType=TIMESTAMP},
+		#{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, #{ext3,jdbcType=VARCHAR},
+		#{ext4,jdbcType=VARCHAR},
+		#{ext5,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="indi.zyf.sso.model.Clazz">
+		insert into clazz
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="schoolName != null">
+				school_name,
+			</if>
+			<if test="sId != null">
+				s_id,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="leader != null">
+				leader,
+			</if>
+			<if test="title != null">
+				title,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+			<if test="createDate != null">
+				create_date,
+			</if>
+			<if test="updateDate != null">
+				update_date,
+			</if>
+			<if test="ext1 != null">
+				ext1,
+			</if>
+			<if test="ext2 != null">
+				ext2,
+			</if>
+			<if test="ext3 != null">
+				ext3,
+			</if>
+			<if test="ext4 != null">
+				ext4,
+			</if>
+			<if test="ext5 != null">
+				ext5,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="schoolName != null">
+				#{schoolName,jdbcType=VARCHAR},
+			</if>
+			<if test="sId != null">
+				#{sId,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="leader != null">
+				#{leader,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				#{title,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				#{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				#{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				#{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				#{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				#{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				#{ext5,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="indi.zyf.sso.model.Clazz">
+		update clazz
+		<set>
+			<if test="schoolName != null">
+				school_name = #{schoolName,jdbcType=VARCHAR},
+			</if>
+			<if test="sId != null">
+				s_id = #{sId,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="leader != null">
+				leader = #{leader,jdbcType=VARCHAR},
+			</if>
+			<if test="title != null">
+				title = #{title,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=INTEGER},
+			</if>
+			<if test="createDate != null">
+				create_date = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateDate != null">
+				update_date = #{updateDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="ext1 != null">
+				ext1 = #{ext1,jdbcType=VARCHAR},
+			</if>
+			<if test="ext2 != null">
+				ext2 = #{ext2,jdbcType=VARCHAR},
+			</if>
+			<if test="ext3 != null">
+				ext3 = #{ext3,jdbcType=VARCHAR},
+			</if>
+			<if test="ext4 != null">
+				ext4 = #{ext4,jdbcType=VARCHAR},
+			</if>
+			<if test="ext5 != null">
+				ext5 = #{ext5,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="indi.zyf.sso.model.Clazz">
+		update clazz
+		set school_name = #{schoolName,jdbcType=VARCHAR},
+		s_id = #{sId,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		leader = #{leader,jdbcType=VARCHAR},
+		title = #{title,jdbcType=VARCHAR},
+		state = #{state,jdbcType=INTEGER},
+		create_date = #{createDate,jdbcType=TIMESTAMP},
+		update_date = #{updateDate,jdbcType=TIMESTAMP},
+		ext1 = #{ext1,jdbcType=VARCHAR},
+		ext2 = #{ext2,jdbcType=VARCHAR},
+		ext3 = #{ext3,jdbcType=VARCHAR},
+		ext4 = #{ext4,jdbcType=VARCHAR},
+		ext5 = #{ext5,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectAll" resultType="indi.zyf.sso.model.Clazz">
+		select * from clazz where state = 1 and s_id = #{sid}
+		<if test="name != null">
+			and school_name like #{name}
+		</if>
+	</select>
+
+	<select id="selectAllCount" resultType="int">
+		select count(1) from clazz 
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} AND <![CDATA[create_date <= #{endTime}]]>)
+		AND <![CDATA[create_date <= #{endTime}]]>
+		<if test="name != null">
+			and school_name like #{name}
+		</if>
+	</select>
+
+	<select id="selectClazzAllCount" resultType="int">
+		select count(1) from clazz 
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId})
+		<if test="name != null">
+			and school_name like #{name}
+		</if>
+	</select>
+
+	<select id="all" resultType="indi.zyf.sso.model.Clazz">
+		select * from clazz 
+		where state = 1
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	
+	<select id="resportAllAsClazz" resultType="indi.zyf.sso.model.Clazz">
+		select * from clazz
+		where state = 1 
+		and id = #{clazzId}
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	
+	<select id="resportAllAsSchool" resultType="indi.zyf.sso.model.Clazz">
+		select * from clazz
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} AND <![CDATA[create_date <= #{endTime}]]>)
+		AND <![CDATA[create_date <= #{endTime}]]>
+	</select>
+	<select id="resportAllBySchool" resultType="indi.zyf.sso.model.Clazz">
+		select * from clazz
+		where state = 1 
+		and s_id IN
+		(SELECT id FROM school 
+		WHERE id=#{sId} )
+	</select>
+	
+	<select id="selectLikeByName" resultType="indi.zyf.sso.model.School">
+		select * from clazz
+		where state = 1 and school_name like #{name}
+	</select>
+	
+	<select id="selectLikeByNameSchool" resultType="indi.zyf.sso.model.School">
+	select * from clazz
+		where state = 1 and s_id  = #{id}  and  school_name like #{name}
+	</select>
+	
+	<select id="getClazzIdBySId" resultType="int">
+		select id from clazz
+		where state = 1 and s_id = #{schoolId}
+	</select>
+</mapper>
